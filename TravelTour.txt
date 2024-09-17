@@ -1,4 +1,1 @@
-[{"id":1,"countryName":"Germany","cityName":"Berlin","tourType":"H","price":3500.0,"countDays":0,"actual":true},
-{"id":2,"countryName":"Spain","cityName":"Madrid","tourType":"L","price":4500.0,"countDays":0,"actual":true},
-{"id":3,"countryName":"France","cityName":"Paris","tourType":"H","price":3890.0,"countDays":0,"actual":true},
-{"id":4,"countryName":"Poland","cityName":"Warsaw","tourType":"L","price":3189.0,"countDays":0,"actual":true}]
+[{"id":1,"countryName":"Germany","cityName":"Berlin","tourType":"H","price":3500.0,"countDays":0,"actual":true},{"id":2,"countryName":"Spain","cityName":"Madrid","tourType":"L","price":3455.0,"countDays":0,"actual":true},{"id":3,"countryName":"France","cityName":"Paris","tourType":"H","price":3890.0,"countDays":0,"actual":false},{"id":4,"countryName":"Poland","cityName":"Warsaw","tourType":"L","price":3189.0,"countDays":0,"actual":true}]

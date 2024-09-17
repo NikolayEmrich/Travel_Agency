@@ -1,5 +1,7 @@
 package Client;
 
+import Controller.CustomerController;
+import Controller.TravelTourController;
 import Domain.Customer;
 import Domain.TravelTour;
 import Repository.CustomerRepository;
@@ -17,9 +19,11 @@ public class Client {
 
         TourRepository repository = new TourRepositoryImpl();
         TravelTourService service = new TravelTourServiceImpl(repository);
+        TravelTourController controllerTour = new TravelTourController(service);
 
         CustomerRepository repository2 = new CustomerRepositoryImpl();
         CustomerService service2 = new CustomerServiceImpl(repository2, service);
+        CustomerController controllerCustomer = new CustomerController(service2);
 
         // Создание туров:
         /*TravelTour tour1 = new TravelTour(true, "Germany", "Berlin", "H", 3200, 10);
@@ -84,17 +88,46 @@ public class Client {
         // Покупка тура клиентом:
         //service2.addTourToCustomer(1, 2);
 
-        // Отображение после покупки:
-        System.out.println("Список всех туров:");
-        service.getAllTravelTours().forEach(System.out::println);
-        System.out.printf("Стоимость всех активных туров: " + service.getSumAllActiveTravelToursPrice());
+        // Создание туров:
+        /*controllerTour.save("Germany", "Berlin", "H", 3500);
+        controllerTour.save("Spain", "Madrid", "L", 3455);
+        controllerTour.save("France", "Paris", "H", 3890);
+        controllerTour.save("Poland", "Warsaw", "L", 3189);*/
 
-        System.out.println();
+        // Отображение после покупки:
+        //System.out.println("Список всех туров:");
+        //controllerTour.getAllTravelTours().forEach(System.out::println);
+
+        // Удаление тура по ID:
+        //controllerTour.deleteTravelTourById(3);
+
+        // Стоимость всех активных туров:
+        //System.out.printf("Стоимость всех активных туров: " + controllerTour.getSumAllActiveTravelToursPrice());
+
+        // Восстановление утра по ID:
+        //controllerTour.activatedTravelTourById(3);
+
+        System.out.println("\nСписок всех туров:");
+        controllerTour.getAllTravelTours().forEach(System.out::println);
+
+        // Создание клиентов:
+        /*controllerCustomer.save("John");
+        controllerCustomer.save("Jack");
+        controllerCustomer.save("Jim");*/
+
+        /*System.out.println();
+        System.out.println("Список всех клиентов:");
+        service2.getAllCustomers().forEach(System.out::println);*/
+
+        //System.out.printf("Стоимость всех активных туров: " + controllerTour.getSumAllActiveTravelToursPrice());
+
+        //System.out.println("\nКлиента ID = 2: " + controllerCustomer.getCustomerById(2));
+
+        // Покупка тура клиентом:
+        //controllerCustomer.addTourToCustomer(2,2);
+
         System.out.println("Список всех клиентов:");
         service2.getAllCustomers().forEach(System.out::println);
-
-
-
 
     }
 }
