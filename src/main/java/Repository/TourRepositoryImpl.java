@@ -102,6 +102,5 @@ public class TourRepositoryImpl implements TourRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

@@ -15,6 +15,13 @@ public class TravelTour {
     public TravelTour() {
     }
 
+    public TravelTour(String countryName, String cityName, String tourType, double price) {
+        this.countryName = countryName;
+        this.cityName = cityName;
+        this.tourType = tourType;
+        this.price = price;
+    }
+
     public TravelTour(boolean isActual, String countryName, String cityName, String tourType, double price, int countDays) {
         this.isActual = isActual;
         this.countryName = countryName;
