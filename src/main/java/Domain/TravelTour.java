@@ -103,7 +103,7 @@ public class TravelTour {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TravelTour: ");
-        sb.append("id= ").append(id);
+        sb.append("id: ").append(id);
         sb.append(", Country - ").append(countryName);
         sb.append(", city - ").append(cityName);
         sb.append(", tourType - ").append(tourType);
