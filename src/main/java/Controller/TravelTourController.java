@@ -63,4 +63,5 @@ public class TravelTourController {
     public double getSumAllActiveTravelToursPrice() {
         return service.getSumAllActiveTravelToursPrice();
     }
+
 }
