@@ -6,43 +6,92 @@ import Repository.CustomerRepository;
 import Repository.CustomerRepositoryImpl;
 import Repository.TourRepository;
 import Repository.TourRepositoryImpl;
-
-import java.util.ArrayList;
-import java.util.List;
+import Service.CustomerService;
+import Service.CustomerServiceImpl;
+import Service.TravelTourService;
+import Service.TravelTourServiceImpl;
 
 public class Client {
 
     public static void main(String[] args) {
 
         TourRepository repository = new TourRepositoryImpl();
+        TravelTourService service = new TravelTourServiceImpl(repository);
+
         CustomerRepository repository2 = new CustomerRepositoryImpl();
+        CustomerService service2 = new CustomerServiceImpl(repository2, service);
 
-        /*TravelTour tour1 = new TravelTour(true, "O", "W", "w", 3200, 10);
-        TravelTour tour2 = new TravelTour(true, "u", "r", "w", 3455, 11);
-        TravelTour tour3 = new TravelTour(true, "y", "e", "s", 3890, 12);
-        TravelTour tour4 = new TravelTour(true, "t", "h", "s", 3189, 13);
+        // Создание туров:
+        /*TravelTour tour1 = new TravelTour(true, "Germany", "Berlin", "H", 3200, 10);
+        TravelTour tour2 = new TravelTour(true, "Spain", "Madrid", "L", 3455, 11);
+        TravelTour tour3 = new TravelTour(true, "France", "Paris", "H", 3890, 12);
+        TravelTour tour4 = new TravelTour(true, "Poland", "Warsaw", "L", 3189, 13);*/
 
-        repository.save(tour1);
+        // Сохранение туров в сервис:
+        /*service.save("Germany", "Berlin", "H", 3500);
+        service.save("Spain", "Madrid", "L", 3455);
+        service.save("France", "Paris", "H", 3890);
+        service.save("Poland", "Warsaw", "L", 3189);*/
+
+        // Сохранение туров в репозиторий:
+        /*repository.save(tour1);
         repository.save(tour2);
         repository.save(tour3);
-        repository.save(tour4);
+        repository.save(tour4);*/
 
-        System.out.println("Список всех туров:");
+        /*System.out.println("Список всех туров:");
         List<TravelTour> tours = repository.findAll();
         tours.forEach(System.out::println);*/
 
-        Customer customer1 = new Customer(true, "Jack", new ArrayList<>());
-        Customer customer2 = new Customer(true, "Jack", new ArrayList<>());
-        Customer customer3 = new Customer(true, "Jack", new ArrayList<>());
+        // Создание клиентов:
+        /*Customer customer1 = new Customer("Jack");
+        Customer customer2 = new Customer("John");
+        Customer customer3 = new Customer("Jim");*/
 
-        repository2.save(customer1);
-        repository2.save(customer2);
-        repository2.save(customer3);
 
-        System.out.println("Список всех клиентов:");
+        //Сохранение клиентов в репозиторий:
+        /*service2.saveCustomer("Jack");
+        service2.saveCustomer("John");
+        service2.saveCustomer("Jim");*/
+
+        /*System.out.println("Список всех клиентов:");
         List<Customer> customers = repository2.findAll();
-        customers.forEach(System.out::println);
+        customers.forEach(System.out::println);*/
 
+        // Удаление туров:
+        //service.deleteTravelTourById(2);
+        //service.deleteTravelTourById(4);
+
+        // Обновление тура:
+        //service.updateTravelTour(2, 4500);
+
+        // Активация тура:
+        //service.activatedTravelTourById(4);
+
+        /*System.out.println("Список всех туров:");
+        service.getAllTravelTours().forEach(System.out::println);
+        System.out.printf("Стоимость всех активных туров: " + service.getSumAllActiveTravelToursPrice());
+
+        System.out.println();
+        System.out.println("Список всех клиентов:");
+        service2.getAllCustomers().forEach(System.out::println);*/
+
+        // Проверка мтодов сервиса:
+        /*System.out.println("\n" + service.getTravelTourById(3));
+        System.out.println(service.getTravelTourByCountry("Germany"));
+        System.out.println(service.getTravelTourByCityName("Berlin"));*/
+
+        // Покупка тура клиентом:
+        //service2.addTourToCustomer(1, 2);
+
+        // Отображение после покупки:
+        System.out.println("Список всех туров:");
+        service.getAllTravelTours().forEach(System.out::println);
+        System.out.printf("Стоимость всех активных туров: " + service.getSumAllActiveTravelToursPrice());
+
+        System.out.println();
+        System.out.println("Список всех клиентов:");
+        service2.getAllCustomers().forEach(System.out::println);
 
 
 

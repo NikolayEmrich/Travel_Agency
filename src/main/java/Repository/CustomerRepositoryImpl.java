@@ -39,7 +39,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public Customer save(Customer customer) {
         List<Customer> customers = findAll();
         customer.setId(++currentId);
-        //customer.setActual(true);
+        customer.setActual(true);
+        customer.setPurchaseHistory(new ArrayList<TravelTour>());
         customers.add(customer);
 
         try {
@@ -69,10 +70,26 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void update(long id, String name) {
-        List<Customer> customers = findAll();
+    public void update(Customer customer) {
 
-        customers.stream().filter(x -> x.getId() == id).findFirst().ifPresent(x -> x.setName(name));
+        List<Customer> customers = findAll();
+        customers.stream().filter(x -> x.getId() == customer.getId())
+                .findFirst()
+                .ifPresent(x -> x.setPurchaseHistory(customer.getPurchaseHistory()));
+
+        /*Customer foundCustomer = findById(customer.getId());
+
+        List<TravelTour> listTours = null;
+        if (foundCustomer != null) {
+            listTours = customer.getPurchaseHistory();
+        }
+        foundCustomer.setPurchaseHistory(listTours);
+
+        foundCustomer.setActual(customer.isActual());
+        foundCustomer.setName(customer.getName());
+        foundCustomer.setPurchaseHistory(customer.getPurchaseHistory());
+        //customers.stream().filter(x -> x.getId() == id).findFirst().ifP
+        resent(x -> x.setName(name));*/
 
         try {
             mapper.writeValue(databaseCustomers, customers);
@@ -95,4 +112,5 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             throw new RuntimeException(e);
         }
     }
+
 }

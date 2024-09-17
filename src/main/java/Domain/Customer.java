@@ -1,5 +1,6 @@
 package Domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,15 +15,20 @@ public class Customer {
     private long id;
     private boolean isActual;
     private String name;
-    private List<TravelTour> purchaseHistory;
+    private List<TravelTour> purchaseHistory = new ArrayList<TravelTour>();
 
     public Customer() {
+    }
+
+    public Customer(String name) {     //   -------- NEW ADD -----------
+        this.isActual = isActual;
+        this.name = name;
     }
 
     public Customer(boolean isActual, String name, List<TravelTour> purchaseHistory) {
         this.isActual = isActual;
         this.name = name;
-        this.purchaseHistory = purchaseHistory;
+        this.purchaseHistory = new ArrayList<>();
     }
 
     public long getId() {
@@ -77,11 +83,11 @@ public class Customer {
                 .append(name)
                 .append(", isActual - ")
                 .append(isActual ? "yes" : "no")
-                .append("\n")
-                .append("Tour List:\n");
+                .append(", ")
+                .append("Tour List: ");
 
         for (TravelTour tour : purchaseHistory) {
-            builder.append(tour).append("\n");
+            builder.append(tour)/*.append("\n")*/;
         }
         return builder.toString();
     }
